@@ -19,8 +19,12 @@ public class User {
         this.lastName = lastName; 
     }
 
-    public String getUserName(){
+    public String getUsername(){
         return username; 
+    }
+
+    public String getPassword(){
+        return password; 
     }
 
     public String getFirstName(){

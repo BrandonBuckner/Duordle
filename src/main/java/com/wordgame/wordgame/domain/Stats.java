@@ -1,5 +1,7 @@
 package com.wordgame.wordgame.domain;
 
+import lombok.Builder;
+
 public class Stats {
     private User user;
 
@@ -7,6 +9,7 @@ public class Stats {
     private int gamesWon; 
     private int guessesMade; 
 
+    @Builder
     public Stats(User user, int gamesPlayed, int gamesWon, int guessesMade){
         this.user = user; 
         this.gamesPlayed = gamesPlayed; 
@@ -25,8 +28,8 @@ public class Stats {
         return user; 
     }
 
-    public String getUserName(){
-        return user.getUserName(); 
+    public String getUsername(){
+        return user.getUsername(); 
     }
 
     public int getGamesPlayed(){
