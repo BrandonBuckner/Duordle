@@ -70,6 +70,14 @@ public class UserDAOImplTests {
             "UPDATE users SET first_name = ?, last_name = ? WHERE username = ?", 
             "Orange", "Smith", "yes"
         );
-        
+    }
+
+    @Test
+    public void testDeleteUserSQL(){
+        underTest.deleteUser("yes");
+        verify(jdbcTemplate).update(
+          "DELETE FROM users WHERE username = ?", 
+          "yes"
+        );
     }
 }

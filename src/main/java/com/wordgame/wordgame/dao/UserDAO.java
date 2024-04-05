@@ -13,4 +13,6 @@ public interface UserDAO {
     List<User> findManyUsers();
 
     void updateUser(User user); 
+
+    void deleteUser(String username); 
 }

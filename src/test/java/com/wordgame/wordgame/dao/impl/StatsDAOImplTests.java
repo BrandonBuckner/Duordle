@@ -63,4 +63,14 @@ public class StatsDAOImplTests {
             3, 1, 12, "no"
         );
     }
+
+    @Test
+    public void testDeleteStatsSQL(){
+        Stats stats1 = TestDataUtil.createTestStats1(); 
+        underTest.deleteStats(stats1.getUsername());
+        verify(jdbcTemplate).update(
+          "DELETE FROM stats WHERE username = ?", 
+            "yes"
+        );
+    }
 }

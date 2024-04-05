@@ -62,4 +62,12 @@ public class UserDAOImpl implements UserDAO {
             user.getFirstName(), user.getLastName(), user.getUsername()
         );
     }
+
+    @Override
+    public void deleteUser(String username) {
+        jdbcTemplate.update(
+            "DELETE FROM users WHERE username = ?",
+            username
+        );
+    }
 }

@@ -80,4 +80,16 @@ public class StatsDAOImplIntegrationTests {
         assertThat(results).isPresent();
         assertThat(results).get().isEqualTo(stats2); 
     }
+
+    @Test
+    public void testDeleteStats(){
+        User user3 = TestDataUtil.createTestUser3();
+        userDAO.create(user3);
+        Stats stats3 = TestDataUtil.createTestStats3();
+        underTest.create(stats3);
+
+        underTest.deleteStats(stats3.getUsername()); 
+        Optional<Stats> results = underTest.findStats(stats3.getUsername());
+        assertThat(results).isEmpty(); 
+    }
 }

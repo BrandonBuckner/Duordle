@@ -56,4 +56,11 @@ public class StatsDAOImpl implements StatsDAO {
             stats.getGamesPlayed(), stats.getGamesWon(), stats.getGussesMade(), stats.getUsername()
         );
     }
+
+    public void deleteStats(String username) {
+        jdbcTemplate.update(
+            "DELETE FROM stats WHERE username = ?", 
+            username
+        );
+    }
 }

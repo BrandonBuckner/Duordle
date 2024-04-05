@@ -63,4 +63,13 @@ public class UserDAOImplIntegrationTests {
         assertThat(results).isPresent(); 
         assertThat(results).get().isEqualTo(user2);
     }
+
+    @Test
+    public void testDeleteUser(){
+        User user1 = TestDataUtil.createTestUser1(); 
+        underTest.create(user1); 
+        underTest.deleteUser(user1.getUsername());
+        Optional<User> results = underTest.findUser(user1.getUsername());
+        assertThat(results).isEmpty();    
+    }
 }
