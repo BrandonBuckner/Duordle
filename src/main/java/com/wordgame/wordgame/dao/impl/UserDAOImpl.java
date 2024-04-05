@@ -10,7 +10,9 @@ import java.util.Optional;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Component;
 
+@Component
 public class UserDAOImpl implements UserDAO {
     private final JdbcTemplate jdbcTemplate; 
 
@@ -26,7 +28,7 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public Optional<User> findUser(String username) {
-        List<User> results = jdbcTemplate.query("SELECT username, password, first_name, last_name WHERE username = ? LIMIT 1", 
+        List<User> results = jdbcTemplate.query("SELECT username, password, first_name, last_name FROM users WHERE username = ? LIMIT 1", 
         new UserRowMapper(), username); 
 
         return results.stream().findFirst();
