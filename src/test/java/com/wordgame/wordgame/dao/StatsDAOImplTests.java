@@ -2,6 +2,7 @@ package com.wordgame.wordgame.dao;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -25,7 +26,7 @@ public class StatsDAOImplTests {
     @Test
     public void testCreateStatsSQL(){
         Stats stats = Stats.builder()
-            .user(new User("kevin1", "secret", "Kevin", "Smith"))
+            .username("kevin1")
             .gamesPlayed(1)
             .gamesWon(0)
             .guessesMade(5)
@@ -36,6 +37,16 @@ public class StatsDAOImplTests {
         verify(jdbcTemplate).update(
             eq("INSERT INTO stats (username, games_played, games_won, guesses_made) VALUES (?, ?, ?, ?)"),
             eq("kevin1"), eq(1), eq(0), eq(5)
+        );
+    }
+
+    @Test
+    public void testReadOneStatsSQL(){
+        underTest.findStats("yes");
+        verify(jdbcTemplate).query(
+            eq("SELECT username, games_played, games_won, guesses_made WHERE username = ? LIMIT 1"),
+            ArgumentMatchers.<StatsDAOImpl.StatsRowMapper>any(),
+            eq("yes")
         );
     }
 }
