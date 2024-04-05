@@ -7,6 +7,6 @@ import com.wordgame.wordgame.domain.User;
 public interface UserDAO {
     void create(User user);
     
-    Optional<User> findUser(String username); //Maybe should do in an optional? 
+    Optional<User> findUser(String username);
 
 }

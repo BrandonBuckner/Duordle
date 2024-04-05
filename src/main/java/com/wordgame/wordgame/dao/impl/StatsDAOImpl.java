@@ -9,9 +9,10 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.jdbc.core.RowMapper;
-
+import org.springframework.stereotype.Component;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+@Component
 public class StatsDAOImpl implements StatsDAO {
     private final JdbcTemplate jdbcTemplate; 
 
@@ -26,7 +27,7 @@ public class StatsDAOImpl implements StatsDAO {
 
     @Override
     public Optional<Stats> findStats(String username) {
-        List<Stats> results = jdbcTemplate.query("SELECT username, games_played, games_won, guesses_made WHERE username = ? LIMIT 1", 
+        List<Stats> results = jdbcTemplate.query("SELECT username, games_played, games_won, guesses_made FROM stats WHERE username = ? LIMIT 1", 
         new StatsRowMapper(), username); 
         return results.stream().findFirst();
     }

@@ -1,4 +1,4 @@
-package com.wordgame.wordgame.dao;
+package com.wordgame.wordgame.dao.impl;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -7,13 +7,13 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 
-import com.wordgame.wordgame.dao.impl.UserDAOImpl;
 import com.wordgame.wordgame.domain.User;
 
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.verify;
+import com.wordgame.wordgame.TestDataUtil;
+
 
 
 @ExtendWith(MockitoExtension.class)
@@ -24,15 +24,10 @@ public class UserDAOImplTests {
 
     @InjectMocks
     private UserDAOImpl underTest; 
-
+    
     @Test
     public void testCreateUserSQL(){
-        User user = User.builder()
-            .username("yes")
-            .password("secure")
-            .firstName("Orange")
-            .lastName("Smith")
-            .build();
+        User user = TestDataUtil.createTestUser(); 
         
         underTest.create(user); 
 
