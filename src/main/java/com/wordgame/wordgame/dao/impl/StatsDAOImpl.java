@@ -43,4 +43,24 @@ public class StatsDAOImpl implements StatsDAO {
                 .build(); 
         }
     }
+
+    @Override
+    public List<Stats> findAllStats() {
+        return jdbcTemplate.query("SELECT username, games_played, games_won, guesses_made FROM stats", new StatsRowMapper());
+    }
+
+    @Override
+    public void updateStats(Stats stats) {
+        jdbcTemplate.update(
+            "UPDATE stats SET games_played = ?, games_won = ?, guesses_made = ? WHERE username = ?",
+            stats.getGamesPlayed(), stats.getGamesWon(), stats.getGussesMade(), stats.getUsername()
+        );
+    }
+
+    public void deleteStats(String username) {
+        jdbcTemplate.update(
+            "DELETE FROM stats WHERE username = ?", 
+            username
+        );
+    }
 }

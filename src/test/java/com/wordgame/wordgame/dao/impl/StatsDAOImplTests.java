@@ -25,7 +25,7 @@ public class StatsDAOImplTests {
 
     @Test
     public void testCreateStatsSQL(){
-        Stats stats = TestDataUtil.createTestStats();
+        Stats stats = TestDataUtil.createTestStats1();
         
         underTest.create(stats); 
 
@@ -39,9 +39,38 @@ public class StatsDAOImplTests {
     public void testReadOneStatsSQL(){
         underTest.findStats("yes");
         verify(jdbcTemplate).query(
-            eq("SELECT username, games_played, games_won, guesses_made WHERE username = ? LIMIT 1"),
+            eq("SELECT username, games_played, games_won, guesses_made FROM stats WHERE username = ? LIMIT 1"),
             ArgumentMatchers.<StatsDAOImpl.StatsRowMapper>any(),
             eq("yes")
+        );
+    }
+
+    @Test
+    public void testReadManyStatsSQL(){
+        underTest.findAllStats();
+        verify(jdbcTemplate).query(
+            eq("SELECT username, games_played, games_won, guesses_made FROM stats"), 
+            ArgumentMatchers.<StatsDAOImpl.StatsRowMapper>any()
+        );
+    }
+
+    @Test
+    public void testUpdateStatsSQL(){
+        Stats stats2 = TestDataUtil.createTestStats2();
+        underTest.updateStats(stats2);
+        verify(jdbcTemplate).update(
+            "UPDATE stats SET games_played = ?, games_won = ?, guesses_made = ? WHERE username = ?",
+            3, 1, 12, "no"
+        );
+    }
+
+    @Test
+    public void testDeleteStatsSQL(){
+        Stats stats1 = TestDataUtil.createTestStats1(); 
+        underTest.deleteStats(stats1.getUsername());
+        verify(jdbcTemplate).update(
+          "DELETE FROM stats WHERE username = ?", 
+            "yes"
         );
     }
 }

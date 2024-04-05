@@ -1,7 +1,9 @@
 package com.wordgame.wordgame.domain;
 
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 
+@EqualsAndHashCode
 public class Stats {
 
     private String username;
