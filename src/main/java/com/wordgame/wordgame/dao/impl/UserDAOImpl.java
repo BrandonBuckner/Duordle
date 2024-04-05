@@ -45,4 +45,11 @@ public class UserDAOImpl implements UserDAO {
                 .build(); 
         }
     }
+
+    public List<User> findManyUsers() {
+        return jdbcTemplate.query(
+            "SELECT username, password, first_name, last_name FROM users", 
+            new UserRowMapper()
+        );
+    }
 }

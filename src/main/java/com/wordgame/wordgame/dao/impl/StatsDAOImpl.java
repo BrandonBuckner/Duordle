@@ -43,4 +43,9 @@ public class StatsDAOImpl implements StatsDAO {
                 .build(); 
         }
     }
+
+    @Override
+    public List<Stats> findAllStats() {
+        return jdbcTemplate.query("SELECT username, games_played, games_won, guesses_made FROM stats", new StatsRowMapper());
+    }
 }

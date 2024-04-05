@@ -27,7 +27,7 @@ public class UserDAOImplTests {
     
     @Test
     public void testCreateUserSQL(){
-        User user = TestDataUtil.createTestUser(); 
+        User user = TestDataUtil.createTestUser1(); 
         
         underTest.create(user); 
 
@@ -37,14 +37,25 @@ public class UserDAOImplTests {
         );
     }
 
-
+    /**
+     * Test to determine if the correct SQL is being used and read 
+     */
     @Test
     public void testReadOneUserSQL(){
         underTest.findUser("yes");
         verify(jdbcTemplate).query(
-            eq("SELECT username, password, first_name, last_name WHERE username = ? LIMIT 1"),
+            eq("SELECT username, password, first_name, last_name FROM users WHERE username = ? LIMIT 1"),
             ArgumentMatchers.<UserDAOImpl.UserRowMapper>any(),
             eq("yes")
+        );
+    }
+
+    @Test
+    public void testReadManyUserSQL(){
+        underTest.findManyUsers();
+        verify(jdbcTemplate).query(
+            eq("SELECT username, password, first_name, last_name FROM users"),
+            ArgumentMatchers.<UserDAOImpl.UserRowMapper>any()
         );
     }
 }
