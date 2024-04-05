@@ -11,4 +11,6 @@ public interface UserDAO {
     Optional<User> findUser(String username);
 
     List<User> findManyUsers();
+
+    void updateUser(User user); 
 }

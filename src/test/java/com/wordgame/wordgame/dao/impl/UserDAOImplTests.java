@@ -58,4 +58,18 @@ public class UserDAOImplTests {
             ArgumentMatchers.<UserDAOImpl.UserRowMapper>any()
         );
     }
+
+
+    @Test 
+    public void testUpdateUserSQL(){
+        User user1 = TestDataUtil.createTestUser1();
+        underTest.updateUser(user1);
+        verify(jdbcTemplate).update(
+            //"UPDATE users SET username = ?, password = ?, first_name = ?, last_name = ? WHERE username = ?",
+            //"yes", "secure", "Orange", "Smith", "yes"
+            "UPDATE users SET first_name = ?, last_name = ? WHERE username = ?", 
+            "Orange", "Smith", "yes"
+        );
+        
+    }
 }

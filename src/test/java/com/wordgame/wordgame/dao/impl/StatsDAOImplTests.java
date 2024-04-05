@@ -53,4 +53,14 @@ public class StatsDAOImplTests {
             ArgumentMatchers.<StatsDAOImpl.StatsRowMapper>any()
         );
     }
+
+    @Test
+    public void testUpdateStatsSQL(){
+        Stats stats2 = TestDataUtil.createTestStats2();
+        underTest.updateStats(stats2);
+        verify(jdbcTemplate).update(
+            "UPDATE stats SET games_played = ?, games_won = ?, guesses_made = ? WHERE username = ?",
+            3, 1, 12, "no"
+        );
+    }
 }

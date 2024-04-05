@@ -11,4 +11,6 @@ public interface StatsDAO {
     Optional<Stats> findStats(String username);
 
     List<Stats> findAllStats();
+
+    void updateStats(Stats stats); 
 } 

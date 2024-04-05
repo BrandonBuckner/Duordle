@@ -52,4 +52,14 @@ public class UserDAOImpl implements UserDAO {
             new UserRowMapper()
         );
     }
+
+    @Override
+    public void updateUser(User user) {
+        jdbcTemplate.update(
+            //"UPDATE users SET username = ?, password = ?, first_name = ?, last_name = ? WHERE username = ?",
+            //user.getUsername(), user.getPassword(), user.getFirstName(), user.getLastName(), user.getUsername()
+            "UPDATE users SET first_name = ?, last_name = ? WHERE username = ?",
+            user.getFirstName(), user.getLastName(), user.getUsername()
+        );
+    }
 }

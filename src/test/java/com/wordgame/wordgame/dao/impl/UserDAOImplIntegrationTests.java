@@ -52,4 +52,15 @@ public class UserDAOImplIntegrationTests {
         assertThat(results).hasSize(3);
         assertThat(results).containsExactly(user1, user2, user3);
     }
+
+    @Test
+    public void testUpdateUser(){
+        User user2 = TestDataUtil.createTestUser2();
+        underTest.create(user2); 
+        user2.setfirstName("Brandon");
+        underTest.updateUser(user2); 
+        Optional<User> results = underTest.findUser(user2.getUsername());
+        assertThat(results).isPresent(); 
+        assertThat(results).get().isEqualTo(user2);
+    }
 }

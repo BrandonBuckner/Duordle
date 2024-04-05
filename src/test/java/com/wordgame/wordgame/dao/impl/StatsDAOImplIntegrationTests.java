@@ -65,4 +65,19 @@ public class StatsDAOImplIntegrationTests {
         assertThat(results).hasSize(3);
         assertThat(results).containsExactly(stats1, stats2, stats3);
     }
+
+    @Test
+    public void testUpdateStats(){
+        User user2 = TestDataUtil.createTestUser2(); 
+        userDAO.create(user2);
+        Stats stats2 = TestDataUtil.createTestStats2();
+        underTest.create(stats2);
+
+        stats2.setGamesPlayed(10);
+        underTest.updateStats(stats2); 
+
+        Optional<Stats> results = underTest.findStats(stats2.getUsername());
+        assertThat(results).isPresent();
+        assertThat(results).get().isEqualTo(stats2); 
+    }
 }
