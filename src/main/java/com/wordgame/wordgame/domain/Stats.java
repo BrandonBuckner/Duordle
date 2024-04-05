@@ -3,33 +3,29 @@ package com.wordgame.wordgame.domain;
 import lombok.Builder;
 
 public class Stats {
-    private User user;
 
+    private String username;
     private int gamesPlayed; 
     private int gamesWon; 
     private int guessesMade; 
 
     @Builder
-    public Stats(User user, int gamesPlayed, int gamesWon, int guessesMade){
-        this.user = user; 
+    public Stats(String username, int gamesPlayed, int gamesWon, int guessesMade){
+        this.username = username; 
         this.gamesPlayed = gamesPlayed; 
         this.gamesWon = gamesWon;        
         this.guessesMade = guessesMade;  
     }
 
-    public Stats(User user){
-        this.user = user; 
+    public Stats(String username){
+        this.username = username; 
         gamesPlayed = 0; 
         gamesWon = 0; 
         guessesMade = 0; 
     }
 
-    public User getUser(){
-        return user; 
-    }
-
     public String getUsername(){
-        return user.getUsername(); 
+        return username; 
     }
 
     public int getGamesPlayed(){
