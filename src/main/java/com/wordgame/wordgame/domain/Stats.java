@@ -38,7 +38,7 @@ public class Stats {
         return gamesWon;
     }
 
-    public int getGussesMade(){
+    public int getGuessesMade(){
         return guessesMade; 
     }
 

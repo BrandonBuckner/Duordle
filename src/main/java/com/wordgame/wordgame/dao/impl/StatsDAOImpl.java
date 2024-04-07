@@ -22,7 +22,7 @@ public class StatsDAOImpl implements StatsDAO {
 
     public void create(Stats stats) {
         jdbcTemplate.update("INSERT INTO stats (username, games_played, games_won, guesses_made) VALUES (?, ?, ?, ?)",
-        stats.getUsername(), stats.getGamesPlayed(), stats.getGamesWon(), stats.getGussesMade());
+        stats.getUsername(), stats.getGamesPlayed(), stats.getGamesWon(), stats.getGuessesMade());
     }
 
     @Override
@@ -53,7 +53,7 @@ public class StatsDAOImpl implements StatsDAO {
     public void updateStats(Stats stats) {
         jdbcTemplate.update(
             "UPDATE stats SET games_played = ?, games_won = ?, guesses_made = ? WHERE username = ?",
-            stats.getGamesPlayed(), stats.getGamesWon(), stats.getGussesMade(), stats.getUsername()
+            stats.getGamesPlayed(), stats.getGamesWon(), stats.getGuessesMade(), stats.getUsername()
         );
     }
 
