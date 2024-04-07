@@ -20,6 +20,7 @@ public class UserDAOImpl implements UserDAO {
         this.jdbcTemplate = jdbcTemplate; 
     }
 
+
     @Override
     public void create(User user) {
         jdbcTemplate.update("INSERT INTO users (username, password, first_Name, last_Name) VALUES (?, ?, ?, ?)",
