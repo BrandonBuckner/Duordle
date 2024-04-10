@@ -6,6 +6,7 @@ you are guessing while the bottom half represents the other.
 
 # How it's made 
 **Tech Used:** HTML, CSS, JavaScript, Bootstrap Framework, Java, Java Spring Boot, PostGres 
+
 This project was built on the Java Spring Bootframework. I decided to start with and create 3 different classes and they were Stats, Users, and Game. The Game class handles all the game logic such as checking a guess, 
 generating a word list, getting a random answer word, and everything else. The Users class is responsible for creating a base user who has four main attributes. A unique username, a password, a first name, and a last name. 
 Finally, we have the stats class which is responsible for keeping track of a user's stats. As a result it stores their username and the other current stat fields such as games played, guesses attempted, and games won. Both 
