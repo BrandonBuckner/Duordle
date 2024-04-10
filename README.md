@@ -1,5 +1,6 @@
 # Duordle 
 Creator: Brandon Buckner 
+
 Duordle is an online web game based on the New York Times Wordle. However, instead of guessing one word you guess two at the same time! The few game rules are listed on the index page
 with gray being used as an incorrect marker, yellow signaling right letter but wrong spot, and green showing correct letter and correct spot. The top half of the box represents the first word 
 you are guessing while the bottom half represents the other. 
