@@ -39,7 +39,7 @@ public class Game {
      */
     public HashSet<String> generateValidWordList() {
         HashSet<String> list = new HashSet<String>();
-        try (Scanner scan = new Scanner(new File("src\\main\\java\\com\\wordgame\\wordgame\\domain\\valid-words.txt"))){
+        try (Scanner scan = new Scanner(new File("Duordle\\src\\main\\java\\com\\wordgame\\wordgame\\domain\\valid-words.txt"))){
             while (scan.hasNext()){
                 list.add(scan.next());
             } 

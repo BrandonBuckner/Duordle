@@ -1,3 +1,11 @@
+.navbar, h1, h2, h3 {
+    font-family: 'Playwrite IS', cursive;
+}
+
+.bodyOfText {
+    font-family: 'Lato', sans-serif;
+}
+
 #createUserForm {
     padding: 10px; 
     margin:auto; 
@@ -28,6 +36,7 @@
     color: black;
     font-weight: bold;
     margin-top: 24px; 
+    font-family: 'Lato', sans-serif;
 }
 
 .half-cell {
@@ -50,13 +59,13 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    max-width: 500px; /* Adjust as necessary */
+    max-width: 500px; 
     margin: auto;
   }
   
   .keyboard-key {
-    width: 30px; /* Adjust as necessary */
-    height: 60px; /* Adjust as necessary */
+    width: 30px; 
+    height: 60px; 
     margin: 2px;
     border: 1px solid #ccc;
     display: flex;
